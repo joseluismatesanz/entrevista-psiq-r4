@@ -1,25 +1,38 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entrevista Psiquiátrica Quest</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <main class="modulo">
-    <section class="intro">
-      <h2>MÓDULO 1</h2>
-      <h1>Introducción a la entrevista psiquiátrica</h1>
-      <p>Lee el contenido y responde las preguntas:</p>
-      <button onclick="mostrarPreguntas()">Comenzar</button>
-    </section>
-    <section class="preguntas" style="display:none;">
-      <h2>Preguntas</h2>
-      <div id="quiz-container"></div>
-    </section>
-  </main>
-  <script src="preguntas.js"></script>
-  <script src="app.js"></script>
-</body>
+<html lang="es" class="bg-slate-950">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- iOS standalone-ish hints -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>Entrevista Psiquiátrica R4</title>
+
+    <!-- Fallback font, Tailwind handles weights/sizes -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-slate-950 text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+
+    <script>
+      // Registro del service worker para modo offline
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('/sw.js')
+            .catch(err => console.log('SW registration failed', err));
+        });
+      }
+    </script>
+  </body>
 </html>
+
